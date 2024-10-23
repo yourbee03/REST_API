@@ -1,4 +1,4 @@
-package com.test.msib;
+package com.test.msib.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,7 +21,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "proyek")
-public class Proyek {
+public class ProyekEntity {
 
     /**
      * The unique identifier for the project.
@@ -79,7 +79,7 @@ public class Proyek {
         joinColumns = @JoinColumn(name = "proyek_id"),
         inverseJoinColumns = @JoinColumn(name = "lokasi_id")
     )
-    private List<Lokasi> lokasi;
+    private List<LokasiEntity> lokasiEntity;
 
     // Getters and Setters
 
@@ -147,11 +147,11 @@ public class Proyek {
         this.createdAt = createdAt;
     }
 
-    public List<Lokasi> getLokasi() {
-        return lokasi;
+    public List<LokasiEntity> getLokasi() {
+        return lokasiEntity;
     }
 
-    public void setLokasi(List<Lokasi> lokasi) {
-        this.lokasi = lokasi;
+    public void setLokasi(List<LokasiEntity> lokasiEntity) {
+        this.lokasiEntity = lokasiEntity;
     }
 }

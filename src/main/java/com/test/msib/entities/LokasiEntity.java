@@ -1,4 +1,4 @@
-package com.test.msib;
+package com.test.msib.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,7 +16,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "lokasi")
-public class Lokasi {
+public class LokasiEntity {
 
     /**
      * The unique identifier for the location.

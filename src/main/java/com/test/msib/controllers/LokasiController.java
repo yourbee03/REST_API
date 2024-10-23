@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.test.msib;
+package com.test.msib.controllers;
 
-import com.test.msib.Lokasi;
-import com.test.msib.LokasiService;
+import com.test.msib.entities.LokasiEntity;
+import com.test.msib.services.LokasiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,13 +30,13 @@ public class LokasiController {
     /**
      * Creates a new location.
      *
-     * @param lokasi the location details to be created
+     * @param lokasiEntity the location details to be created
      * @return the created location
      */
     @PostMapping
-    public ResponseEntity<Lokasi> createLokasi(@RequestBody Lokasi lokasi) {
-        Lokasi savedLokasi = lokasiService.saveLokasi(lokasi);
-        return new ResponseEntity<>(savedLokasi, HttpStatus.CREATED);
+    public ResponseEntity<LokasiEntity> createLokasi(@RequestBody LokasiEntity lokasiEntity) {
+        LokasiEntity savedLokasiEntity = lokasiService.saveLokasi(lokasiEntity);
+        return new ResponseEntity<>(savedLokasiEntity, HttpStatus.CREATED);
     }
 
     /**
@@ -45,7 +45,7 @@ public class LokasiController {
      * @return a list of all locations
      */
     @GetMapping
-    public ResponseEntity<List<Lokasi>> getAllLokasi() {
+    public ResponseEntity<List<LokasiEntity>> getAllLokasi() {
         return ResponseEntity.ok(lokasiService.getAllLokasi());
     }
 
@@ -53,13 +53,13 @@ public class LokasiController {
      * Updates an existing location.
      *
      * @param id the unique identifier of the location to be updated
-     * @param lokasiDetails the updated location details
+     * @param lokasiEntityDetails the updated location details
      * @return the updated location
      */
     @PutMapping("/{id}")
-    public ResponseEntity<Lokasi> updateLokasi(@PathVariable Long id, @RequestBody Lokasi lokasiDetails) {
-        Lokasi updatedLokasi = lokasiService.updateLokasi(id, lokasiDetails);
-        return ResponseEntity.ok(updatedLokasi);
+    public ResponseEntity<LokasiEntity> updateLokasi(@PathVariable Long id, @RequestBody LokasiEntity lokasiEntityDetails) {
+        LokasiEntity updatedLokasiEntity = lokasiService.updateLokasi(id, lokasiEntityDetails);
+        return ResponseEntity.ok(updatedLokasiEntity);
     }
 
     /**

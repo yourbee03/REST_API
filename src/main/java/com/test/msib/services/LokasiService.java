@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.test.msib;
+package com.test.msib.services;
 
-import com.test.msib.Lokasi;
-import com.test.msib.LokasiRepository;
+import com.test.msib.exceptions.ResourceNotFoundException;
+import com.test.msib.entities.LokasiEntity;
+import com.test.msib.repositories.LokasiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -28,11 +29,11 @@ public class LokasiService {
     /**
      * Saves a new Lokasi entity to the database.
      *
-     * @param lokasi the Lokasi entity to be saved
+     * @param lokasiEntity the Lokasi entity to be saved
      * @return the saved Lokasi entity
      */
-    public Lokasi saveLokasi(Lokasi lokasi) {
-        return lokasiRepository.save(lokasi);
+    public LokasiEntity saveLokasi(LokasiEntity lokasiEntity) {
+        return lokasiRepository.save(lokasiEntity);
     }
 
     /**
@@ -40,7 +41,7 @@ public class LokasiService {
      *
      * @return a list of all Lokasi entities
      */
-    public List<Lokasi> getAllLokasi() {
+    public List<LokasiEntity> getAllLokasi() {
         return lokasiRepository.findAll();
     }
 
@@ -48,16 +49,16 @@ public class LokasiService {
      * Updates an existing Lokasi entity in the database.
      *
      * @param id the unique identifier of the Lokasi entity to be updated
-     * @param lokasiDetails the updated Lokasi entity details
+     * @param lokasiEntityDetails the updated Lokasi entity details
      * @return the updated Lokasi entity
      */
-    public Lokasi updateLokasi(Long id, Lokasi lokasiDetails) {
-        Lokasi lokasi = lokasiRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Lokasi not found"));
-        lokasi.setNamaLokasi(lokasiDetails.getNamaLokasi());
-        lokasi.setNegara(lokasiDetails.getNegara());
-        lokasi.setProvinsi(lokasiDetails.getProvinsi());
-        lokasi.setKota(lokasiDetails.getKota());
-        return lokasiRepository.save(lokasi);
+    public LokasiEntity updateLokasi(Long id, LokasiEntity lokasiEntityDetails) {
+        LokasiEntity lokasiEntity = lokasiRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Lokasi not found"));
+        lokasiEntity.setNamaLokasi(lokasiEntityDetails.getNamaLokasi());
+        lokasiEntity.setNegara(lokasiEntityDetails.getNegara());
+        lokasiEntity.setProvinsi(lokasiEntityDetails.getProvinsi());
+        lokasiEntity.setKota(lokasiEntityDetails.getKota());
+        return lokasiRepository.save(lokasiEntity);
     }
 
     /**
